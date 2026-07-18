@@ -1,8 +1,8 @@
 class Punchlist < Formula
   desc "Markdown-native task and ticket system for humans and AI agents"
   homepage "https://github.com/GiantRavens/punchlist"
-  url "https://github.com/GiantRavens/punchlist/archive/refs/tags/v1.3.0.tar.gz"
-  sha256 "59aff76d325257e806a9f37e0c5c97c958c7af5a5c484071064af59a731dec46"
+  url "https://github.com/GiantRavens/punchlist/archive/refs/tags/v1.3.1.tar.gz"
+  sha256 "10e98bdbdd6e4a229b3178885bcf363e9760254ba228222f051fd778cc4dab3b"
   license "MIT"
   head "https://github.com/GiantRavens/punchlist.git", branch: "main"
 
