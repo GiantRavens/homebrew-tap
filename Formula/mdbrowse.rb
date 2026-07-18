@@ -1,6 +1,4 @@
 class Mdbrowse < Formula
-  include Language::Python::Virtualenv
-
   desc "Web-to-markdown compiler and terminal browser for humans, agents, and OSINT"
   homepage "https://github.com/GiantRavens/mdbrowse"
   url "https://github.com/GiantRavens/mdbrowse/archive/refs/tags/v2.0.0.tar.gz"
@@ -12,8 +10,10 @@ class Mdbrowse < Formula
 
   def install
     # the project ships `mdb` (CLI/reader) and `mdb-mcp` (MCP server);
-    # deps resolve from PyPI wheels into the formula's private virtualenv
-    venv = virtualenv_create(libexec, "python3.12")
+    # a standard venv (which includes pip, unlike brew's virtualenv_create)
+    # resolves deps from PyPI wheels into the formula's private libexec
+    python3 = Formula["python@3.12"].opt_bin/"python3.12"
+    system python3, "-m", "venv", libexec
     system libexec/"bin/pip", "install", "--upgrade", "pip"
     system libexec/"bin/pip", "install", buildpath.to_s
     bin.install_symlink libexec/"bin/mdb", libexec/"bin/mdb-mcp"
