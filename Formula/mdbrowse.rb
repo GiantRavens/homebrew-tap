@@ -1,8 +1,8 @@
 class Mdbrowse < Formula
   desc "Web-to-markdown compiler and terminal browser for humans, agents, and OSINT"
   homepage "https://github.com/GiantRavens/mdbrowse"
-  url "https://github.com/GiantRavens/mdbrowse/archive/refs/tags/v2.0.0.tar.gz"
-  sha256 "8d6a6064dd46311e7b9d2a1a44ff6be85ff99c86d703b624eb16cd19a25865f2"
+  url "https://github.com/GiantRavens/mdbrowse/archive/refs/tags/v2.0.1.tar.gz"
+  sha256 "e2fa9bc24e0a367ef7404e5342ca2ac556fec18afd431e2dc8a070dbc88dfbcd"
   license "MIT"
   head "https://github.com/GiantRavens/mdbrowse.git", branch: "main"
 
@@ -28,6 +28,6 @@ class Mdbrowse < Formula
   end
 
   test do
-    assert_match "mdb 2.0.0", shell_output("#{bin}/mdb --version")
+    assert_match "mdb 2.0.1", shell_output("#{bin}/mdb --version")
   end
 end
