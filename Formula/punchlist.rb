@@ -1,4 +1,4 @@
-class Pin < Formula
+class Punchlist < Formula
   desc "Markdown-native task and ticket system for humans and AI agents"
   homepage "https://github.com/GiantRavens/punchlist"
   url "https://github.com/GiantRavens/punchlist/archive/refs/tags/v1.3.0.tar.gz"
@@ -9,7 +9,8 @@ class Pin < Formula
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X punchlist/cmd.Version=#{version}")
+    # the project is punchlist; the CLI it ships is `pin`
+    system "go", "build", *std_go_args(output: bin/"pin", ldflags: "-s -w -X punchlist/cmd.Version=#{version}")
     generate_completions_from_executable(bin/"pin", "completion")
   end
 
