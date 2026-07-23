@@ -12,11 +12,13 @@ class Mdbrowse < Formula
     # the project ships `mdb` (CLI/reader) and `mdb-mcp` (MCP server);
     # a standard venv (which includes pip, unlike brew's virtualenv_create)
     # resolves deps from PyPI wheels into the formula's private libexec
-    python3 = Formula["python@3.12"].opt_bin/"python3.12"
+    python3 = formula_opt_bin("python@3.12")/"python3.12"
     system python3, "-m", "venv", libexec
     system libexec/"bin/pip", "install", "--upgrade", "pip"
     system libexec/"bin/pip", "install", buildpath.to_s
     bin.install_symlink libexec/"bin/mdb", libexec/"bin/mdb-mcp"
+    # The completion command lands after the currently tagged v2.0.1.
+    generate_completions_from_executable(bin/"mdb", "completion") if build.head? || version >= Version.new("2.0.2")
   end
 
   def caveats
